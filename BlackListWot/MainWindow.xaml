@@ -12,10 +12,11 @@
             <ColumnDefinition Width="700*"/>
             <ColumnDefinition Width="160*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="170" Grid.Column="1" Margin="0,79,0,0" OpacityMask="#FFDE0E0E" MinWidth="150" MinHeight="60"/>
-        <ListBox HorizontalAlignment="Left" Height="569" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Name="ListViewAlliace" SelectionChanged="ListViewAlliace_SelectionChanged"/>
-        <ListBox HorizontalAlignment="Left" Height="569" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Name="ListViewEnemy" Grid.Column="2"/>
+        
+        <ListBox HorizontalAlignment="Left" Height="569" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Name="ListViewAlliace" SelectionChanged="ListViewAlliace_SelectionChanged" />
+        <ListBox HorizontalAlignment="Right" Height="569" Margin="0,10,10,0" VerticalAlignment="Top" Width="280" Name="ListViewEnemy" Grid.Column="2"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="715,564,0,0" VerticalAlignment="Top" Width="75" Click="Click_button"/>
+
 
     </Grid>
 </Window>

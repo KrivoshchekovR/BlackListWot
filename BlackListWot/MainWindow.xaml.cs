@@ -32,7 +32,7 @@ namespace BlackListWot
             Random rand = new Random();
             for (int h = 0; h < kol_men; h++)
             {
-                Bans b = new Bans(1, "Нарушение законов зоны");
+                Bans b = new Bans(h, "Нарушение законов зоны");
                 SortedSet<Bans> bans = new SortedSet<Bans>();
                 byte[] s = new byte[6];
                 
@@ -65,28 +65,64 @@ namespace BlackListWot
             {
                 ListBoxItem itm = new ListBoxItem();
                 itm.Content = Lis.nickname;
+               // itm.Selected += new RoutedEventHandler(ListItemSelect);
                 ListViewAlliace.Items.Add(itm);
             }
             foreach (MEMBER Lis in ListEnemy)
             {
                 ListBoxItem itm = new ListBoxItem();
                 itm.Content = Lis.nickname;
+              //  itm.Selected += new RoutedEventHandler(ListItemSelect);
                 ListViewEnemy.Items.Add(itm);
             }
             
+        }
+        private void ListItemSelect(object sender, EventArgs e)
+        {
+            ComboBox cmb = new ComboBox();
+            object item = ListViewAlliace.SelectedItem;
+            string s = item.ToString();
+            string result = s.Substring(0, s.LastIndexOf(' '));
+
+            foreach (MEMBER Lis in ListAlliace)
+            {
+                if (s==Lis.nickname)
+                foreach (Bans b in Lis.ssBans)
+                {
+                    ComboBoxItem ci = new ComboBoxItem();
+                    ci.Content =
+                    cmb.Items.Add(ci);
+                }
+            }
         }
 
         private void ListViewAlliace_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object item = ListViewAlliace.SelectedItem;
+            ComboBox cmb = new ComboBox();
             if (item == null)
             {
                 MessageBox.Show("000");
             }
             else
             {
-                MessageBox.Show("ФАК");
+                //MessageBox.Show("ФАК");
+                string s = item.ToString();
+                string result = s.Substring(0, s.LastIndexOf(' '));
+
+                foreach (MEMBER Lis in ListAlliace)
+                {
+                    if (s == Lis.nickname)
+                        foreach (Bans b in Lis.ssBans)
+                        {
+                            ComboBoxItem ci = new ComboBoxItem();
+                            ci.Content = b.nameban + " " + b.qty;
+                            cmb.Items.Add(ci);
+                        }
+                }
+
             }
         }
+
     }
 }
