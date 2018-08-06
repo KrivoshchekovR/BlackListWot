@@ -108,11 +108,10 @@ namespace BlackListWot
             {
                 //MessageBox.Show("ФАК");
                 string s = item.ToString();
-                string result = s.Substring(0, s.LastIndexOf(' '));
-
+                string result = s.Substring(s.LastIndexOf(' ')+1);
                 foreach (MEMBER Lis in ListAlliace)
                 {
-                    if (s == Lis.nickname)
+                    if (result == Lis.nickname)
                         foreach (Bans b in Lis.ssBans)
                         {
                             ComboBoxItem ci = new ComboBoxItem();
@@ -122,6 +121,7 @@ namespace BlackListWot
                 }
 
             }
+            
         }
 
     }
